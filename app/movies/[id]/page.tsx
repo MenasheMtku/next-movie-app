@@ -3,12 +3,11 @@
 import React from "react";
 import Image from "next/image";
 
-import { getMovieDetails } from "@/types"; // Adjust based on actual API service path
+import { getMovieDetails } from "@/lib/tmdb"; // Adjust based on actual API service path
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 
 interface MovieDetailsProps {
   params: {
@@ -20,8 +19,6 @@ const imageOriginal = "https://image.tmdb.org/t/p/original";
 
 const MovieDetails = async ({ params }: MovieDetailsProps) => {
   const movie = await getMovieDetails(params.id);
-  // const [imageLoaded, setImageLoaded] = useState(false);
-  // console.log(movie);
 
   if (!movie) {
     return <p>Movie not found</p>;
@@ -50,6 +47,7 @@ const MovieDetails = async ({ params }: MovieDetailsProps) => {
               height={100}
               alt={movie.title}
               className="mb-4 rounded-lg object-cover"
+              priority
             />
           </AspectRatio>
         </div>

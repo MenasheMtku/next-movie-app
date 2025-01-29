@@ -1,4 +1,4 @@
-import MovieServerWrapper from "../components/server/MovieServerWrapper";
+import MovieServerWrapper from "@/components/server/MovieServerWrapper";
 
 const MoviesPage = () => {
   return <MovieServerWrapper />;

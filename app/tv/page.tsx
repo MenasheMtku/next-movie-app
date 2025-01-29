@@ -1,4 +1,4 @@
-import TvServerWrapper from "../components/server/TvServerWrapper";
+import TvServerWrapper from "@/components/server/TvServerWrapper";
 
 const TvPage = () => {
   return <TvServerWrapper />;
