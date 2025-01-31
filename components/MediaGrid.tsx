@@ -1,3 +1,4 @@
+// components/MediaGrid.tsx
 "use client";
 
 import { useState } from "react";
@@ -41,8 +42,8 @@ const MediaGrid = ({ data, title, mediaType }: MediaGridProps) => {
 
   return (
     <>
-      <h1 className="text-center text-3xl font-normal">{title}</h1>
-      <div className="mx-auto mb-4 grid max-w-[1280px] grid-cols-[repeat(auto-fill,minmax(168px,1fr))] place-items-center gap-6 p-4 align-middle">
+      <h1 className="p-4 text-center text-3xl font-normal">{title}</h1>
+      <div className="mx-auto mb-4 grid max-w-[1280px] grid-cols-[repeat(auto-fit,minmax(168px,1fr))] place-items-center gap-6 p-4 align-middle">
         {data.length > 0 &&
           data.map((item: MediaItem) => (
             <Link key={item.id} href={getLink(item.id)}>
@@ -57,7 +58,7 @@ const MediaGrid = ({ data, title, mediaType }: MediaGridProps) => {
                     src={`${image500}${item.poster_path}`}
                     width={168}
                     height={252}
-                    priority={false}
+                    priority
                     alt={getTitle(item)}
                     className={`w-full object-cover transition-opacity duration-300 ${
                       loadingStates[item.id] ? "opacity-100" : "opacity-0"

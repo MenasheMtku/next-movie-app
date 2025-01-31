@@ -40,7 +40,7 @@ export default function RootLayout({
           defaultTheme="light"
         >
           <Navbar />
-          <main className="container mx-auto min-h-screen max-w-7xl px-4 pb-4 pt-[4.5rem]">
+          <main className="mx-auto min-h-screen pb-4 pt-[4.5rem]">
             {children}
           </main>
           <Footer />
