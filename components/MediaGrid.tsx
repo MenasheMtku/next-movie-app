@@ -16,11 +16,11 @@ type MediaItem = Movie | Tv;
 
 interface MediaGridProps {
   data: MediaItem[];
-  title: string;
+  title?: string;
   mediaType: "movies" | "tv";
 }
 
-const MediaGrid = ({ data, title, mediaType }: MediaGridProps) => {
+const MediaGrid = ({ data, mediaType }: MediaGridProps) => {
   const [loadingStates, setLoadingStates] = useState<{
     [key: number]: boolean;
   }>({});
@@ -59,9 +59,8 @@ const MediaGrid = ({ data, title, mediaType }: MediaGridProps) => {
                     height={252}
                     priority
                     alt={getTitle(item)}
-                    className={`w-full object-cover transition-opacity duration-300 ${
-                      loadingStates[item.id] ? "opacity-100" : "opacity-0"
-                    }`}
+                    className={`w-full object-cover transition-opacity duration-300 ${loadingStates[item.id] ? "opacity-100" : "opacity-0"
+                      }`}
                     onLoad={() => handleImageLoad(item.id)}
                   />
                 </AspectRatio>
