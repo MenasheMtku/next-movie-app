@@ -16,10 +16,10 @@ const MovieServerWrapper = async () => {
 
   // Define categories with their respective data
   const movieCategories = [
-    { id: "trending", title: "Trending Movies", data: trendingMovie },
-    { id: "popular", title: "Popular Movies", data: popularMovie },
-    { id: "top_rated", title: "Top Rated Movies", data: topRatedMovie },
-    { id: "upcoming", title: "Upcoming Movies", data: upcomingMovie },
+    { id: "trending", title: "Trending", data: trendingMovie },
+    { id: "popular", title: "Popular", data: popularMovie },
+    { id: "top_rated", title: "Top Rated", data: topRatedMovie },
+    { id: "upcoming", title: "Upcoming", data: upcomingMovie },
   ];
 
   return (

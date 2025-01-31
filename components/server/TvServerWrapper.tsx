@@ -16,10 +16,10 @@ const TvServerWrapper = async () => {
 
   // Define categories with their respective data
   const tvCategories = [
-    { id: "trending", title: "Trending Tv Shows", data: trendingTvShows },
-    { id: "popular", title: "Popular Tv Shows", data: popularTvShows },
-    { id: "top_rated", title: "Top Rated Tv Shows", data: topRatedTvShows },
-    { id: "on_the_air", title: "On The Air Tv Shows", data: onTheAir },
+    { id: "trending", title: "Trending", data: trendingTvShows },
+    { id: "popular", title: "Popular", data: popularTvShows },
+    { id: "top_rated", title: "Top Rated", data: topRatedTvShows },
+    { id: "on_the_air", title: "On The Air", data: onTheAir },
   ];
   return (
     <>

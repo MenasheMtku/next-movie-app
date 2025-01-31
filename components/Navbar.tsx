@@ -1,9 +1,11 @@
-// import React from "react";
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const links = [
     // { id: 1, title: "Home", href: "/" },
     { id: 2, title: "Movies", href: "/movies" },
@@ -26,9 +28,18 @@ const Navbar = () => {
 
         <ul className="flex gap-4 font-medium">
           {links.map((link) => {
+            const isActive = pathname === link.href;
             return (
-              <li key={link.id} className="p-1">
-                <Link href={link.href}>{link.title}</Link>
+              <li
+                key={link.id}
+                className={`relative px-3 py-2 font-semibold transition-colors duration-200 ${isActive ? "font-semibold text-gray-800 dark:text-foreground" : "text-gray-500 dark:text-gray-200"}`}
+              >
+                <Link href={link.href} className="relative pb-2">
+                  {link.title}
+                  {isActive && (
+                    <div className="absolute bottom-0 left-0 h-0.5 w-full transform bg-gray-800 dark:bg-foreground transition-transform duration-200" />
+                  )}
+                </Link>
               </li>
             );
           })}

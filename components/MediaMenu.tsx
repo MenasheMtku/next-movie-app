@@ -34,8 +34,8 @@ const MediaMenu = ({ categories, mediaType }: MediaMenuProps) => {
   );
 
   return (
-    <div className="container mx-auto px-4 py-2">
-      <div className="mb-8 flex justify-center">
+    <div className="max-w-7xl mx-auto px-4 py-2">
+      <div className="mb-8 px-4 flex justify-end">
         <Select
           defaultValue={categories[0]?.id}
           onValueChange={(value) => setSelectedCategory(value)}

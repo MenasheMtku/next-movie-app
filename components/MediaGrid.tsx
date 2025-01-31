@@ -17,7 +17,7 @@ type MediaItem = Movie | Tv;
 interface MediaGridProps {
   data: MediaItem[];
   title: string;
-  mediaType: 'movies' | 'tv';
+  mediaType: "movies" | "tv";
 }
 
 const MediaGrid = ({ data, title, mediaType }: MediaGridProps) => {
@@ -30,7 +30,7 @@ const MediaGrid = ({ data, title, mediaType }: MediaGridProps) => {
   };
 
   const getTitle = (item: MediaItem): string => {
-    if ('title' in item) {
+    if ("title" in item) {
       return item.title;
     }
     return (item as Tv).name;
@@ -42,7 +42,6 @@ const MediaGrid = ({ data, title, mediaType }: MediaGridProps) => {
 
   return (
     <>
-      <h1 className="p-4 text-center text-3xl font-normal">{title}</h1>
       <div className="mx-auto mb-4 grid max-w-[1280px] grid-cols-[repeat(auto-fit,minmax(168px,1fr))] place-items-center gap-6 p-4 align-middle">
         {data.length > 0 &&
           data.map((item: MediaItem) => (
