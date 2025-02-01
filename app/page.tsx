@@ -8,7 +8,6 @@ import { getTrendingAll } from "@/lib/tmdb";
 export default async function Home() {
   const trending = await getTrendingAll();
   const imageOriginal = "https://image.tmdb.org/t/p/original";
-  const imagePoster = "https://image.tmdb.org/t/p/w500";
   const backdrop = "https://image.tmdb.org/t/p/original";
   const randomIndex = Math.floor(Math.random() * trending.length);
   const featuredContent = trending[randomIndex];
