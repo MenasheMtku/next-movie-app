@@ -2,15 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Movie, Tv } from "@/types";
-import { smartTitleShorten } from "@/lib/helpers";
-import { Card } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { MediaCard } from "./MediaCard";
 
-const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 type MediaItem = Movie | Tv;
 
