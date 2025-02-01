@@ -9,6 +9,7 @@ export default async function Home() {
   const trending = await getTrendingAll();
   const imageOriginal = "https://image.tmdb.org/t/p/original";
   const imagePoster = "https://image.tmdb.org/t/p/w500";
+  const backdrop = "https://image.tmdb.org/t/p/original";
   const randomIndex = Math.floor(Math.random() * trending.length);
   const featuredContent = trending[randomIndex];
   
@@ -33,7 +34,7 @@ export default async function Home() {
             priority
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent">
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/50 to-transparent">
           <div className="max-w-7xl mx-auto h-full">
             <div className="absolute bottom-0 max-w-2xl p-8">
               <div className="mb-4 inline-flex items-baseline gap-6">
@@ -75,11 +76,11 @@ export default async function Home() {
           {trending.slice(0, 4).map((item) => (
             <Card
               key={item.id}
-              className="overflow-hidden border-gray-700 bg-gray-800 transition-transform hover:scale-105"
+              className="overflow-hidden border-gray-700 transition-transform hover:scale-105"
             >
               <CardContent className="p-0">
                 <Image
-                  src={`${imagePoster}${item.poster_path}`}
+                  src={`${backdrop}${item.backdrop_path}`}
                   alt={isMovie(item) ? item.title : item.name}
                   className="h-full w-full object-cover"
                   width={185}
