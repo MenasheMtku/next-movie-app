@@ -4,9 +4,11 @@ import { Card } from "@/components/ui/card";
 import { Skeleton } from "./ui/skeleton";
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { smartTitleShorten } from "@/lib/helpers";
+import {Movie, Tv} from "@/types";
 
 interface MediaCardProps {
   id: number;
+  item?: Movie | Tv;
   title: string;
   posterPath: string;
   isLoaded: boolean;
