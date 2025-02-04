@@ -35,7 +35,7 @@ export const getTreandingTvShows = async () => {
   const data = await response.json();
   const tv: Tv[] = data.results;
   return tv;
-}
+};
 export const getPopularTvShows = async () => {
   const response = await fetch(`${url}tv/popular?api_key=${key}`);
   const data = await response.json();
@@ -82,4 +82,16 @@ export const getTrendingAll = async () => {
   const trending: (Movie | Tv)[] = data.results;
 
   return trending;
+};
+
+export const fetchTrailer = async (id: number, type: "movie" | "tv") => {
+  try {
+    const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${key}`);
+    const data = await res.json();
+    const trailer = data.results.find((video: any) => video.type === "Trailer" && video.site === "YouTube");
+    return trailer ? `https://www.youtube.com/embed/${trailer.key}` : null;
+  } catch (error) {
+    console.error("Failed to fetch trailer:", error);
+    return null;
+  }
 };
