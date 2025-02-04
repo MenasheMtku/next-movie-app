@@ -84,14 +84,35 @@ export const getTrendingAll = async () => {
   return trending;
 };
 
-export const fetchTrailer = async (id: number, type: "movie" | "tv") => {
+interface TMDBVideo {
+  id: string;
+  key: string;
+  name: string;
+  site: "YouTube" | "Vimeo";
+  type: "Trailer" | "Teaser" | "Clip" | "Featurette" | "Behind the Scenes" | "Bloopers";
+  official: boolean;
+  published_at: string;
+}
+
+export const fetchTrailer = async (id: number, type: "movie" | "tv"): Promise<string | null> => {
   try {
-    const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${key}`);
-    const data = await res.json();
-    const trailer = data.results.find((video: any) => video.type === "Trailer" && video.site === "YouTube");
+    const res = await fetch(
+      `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${key}&language=en-US`
+    );
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch trailer. Status: ${res.status}`);
+    }
+
+    const data: { results: TMDBVideo[] } = await res.json();
+    const trailer = data.results.find(
+      (video) => video.type === "Trailer" && video.site === "YouTube"
+    );
+
     return trailer ? `https://www.youtube.com/embed/${trailer.key}` : null;
   } catch (error) {
     console.error("Failed to fetch trailer:", error);
     return null;
   }
 };
+
