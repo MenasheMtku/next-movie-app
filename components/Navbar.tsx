@@ -8,7 +8,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const links = [
     // { id: 1, title: "Home", href: "/" },
-    { id: 2, title: "Movies", href: "/movies" },
+    { id: 2, title: "Movies", href: "/movie" },
     { id: 3, title: "TV Shows", href: "/tv" },
   ];
 
