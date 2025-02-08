@@ -12,7 +12,7 @@ import {
 import { Movie, Tv } from "@/types";
 import MediaGrid from "./MediaGrid";
 
-type MediaType = "movies" | "tv";
+type MediaType = "movie" | "tv";
 type MediaItem = Movie | Tv;
 
 interface MediaMenuProps {

@@ -19,7 +19,7 @@ const MoviesPage = async () => {
   ];
 
 
-  return <MediaMenu categories={movieCategories} mediaType="movies" />;
+  return <MediaMenu categories={movieCategories} mediaType="movie" />;
 };
 
 export default MoviesPage;

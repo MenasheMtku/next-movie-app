@@ -19,7 +19,7 @@ const TvPage = async () => {
     { id: "on_the_air", title: "On The Air", data: onTheAir },
   ];
 
-  return <MediaMenu categories={tvCategories} mediaType={"tv"} />;
+  return <MediaMenu categories={tvCategories} mediaType="tv" />;
 }
 
 export default TvPage;

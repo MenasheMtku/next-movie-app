@@ -11,7 +11,7 @@ type MediaItem = Movie | Tv;
 interface MediaGridProps {
   data: MediaItem[];
   title?: string;
-  mediaType: "movies" | "tv";
+  mediaType: "movie" | "tv";
 }
 
 const MediaGrid = ({ data, mediaType }: MediaGridProps) => {
@@ -36,7 +36,7 @@ const MediaGrid = ({ data, mediaType }: MediaGridProps) => {
 
   return (
     <>
-      <div className="mx-auto mb-4 grid w-full max-w-[1280px] grid-cols-[repeat(auto-fill,minmax(190px,1fr))] gap-6 p-4">
+      <div className="mx-auto mb-4 grid w-full max-w-[1280px] grid-cols-[repeat(auto-fill,minmax(168px,1fr))] gap-6 p-4">
         {data.length > 0 &&
           data.map((item: MediaItem) => (
             <Link key={item.id} href={getLink(item.id)} className="w-full">
