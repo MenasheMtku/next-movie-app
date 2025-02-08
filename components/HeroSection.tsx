@@ -1,4 +1,4 @@
-'use client';
+
 import Image from "next/image";
 import { Info, Star } from "lucide-react";
 import { Movie, Tv } from "@/types";
