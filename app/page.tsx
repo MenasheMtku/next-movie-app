@@ -12,7 +12,7 @@ export default async function Home() {
       {/* Hero Section */}
       <HeroSection content={featuredContent} />
       {/* Trending Section */}
-      <HeroTrending items={trending} mediaType="movies" />
+      <HeroTrending items={trending}/>
     </div>
   );
 }
