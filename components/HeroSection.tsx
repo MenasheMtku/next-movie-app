@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { Info, Star } from "lucide-react";
 import { Movie, Tv } from "@/types";
@@ -15,7 +14,6 @@ const isMovie = (item: Movie | Tv): item is Movie => {
 };
 
 const imageOriginal = "https://image.tmdb.org/t/p/original";
-
 
 export const HeroSection = ({ content }: HeroSectionProps) => {
   const title = isMovie(content) ? content.title : content.name;
@@ -38,7 +36,7 @@ export const HeroSection = ({ content }: HeroSectionProps) => {
         <div className="mx-auto h-full max-w-7xl">
           <div className="absolute bottom-0 max-w-2xl p-8">
             <div className="mb-4 inline-flex items-baseline gap-6">
-              <h1 className="text-xl md:text-4xl font-bold">{title}</h1>
+              <h1 className="text-xl font-bold md:text-4xl">{title}</h1>
               <p className="text-lg">{year}</p>
             </div>
             <div className="mb-4 flex items-center gap-2">
@@ -46,13 +44,17 @@ export const HeroSection = ({ content }: HeroSectionProps) => {
               <span>{content.vote_average.toFixed(1)}</span>
             </div>
             <div className="flex gap-4">
-              <WatchNowButton content={content}/>
-              <Link href={`/${isMovie(content) ? "movies" : "tv"}/${content.id}`}>
-                <Button variant={"outline"} className="flex items-center gap-2 rounded-lg bg-gray-700 px-6 py-3 font-semibold hover:bg-gray-600">
+              <WatchNowButton content={content} />
+              <Link
+                href={`/${isMovie(content) ? "movie" : "tv"}/${content.id}`}
+              >
+                <Button
+                  variant={"outline"}
+                  className="flex items-center gap-2 rounded-lg bg-gray-700 px-6 py-3 font-semibold hover:bg-gray-600"
+                >
                   <Info size={20} />
                   More Info
                 </Button>
-
               </Link>
             </div>
           </div>
@@ -61,4 +63,3 @@ export const HeroSection = ({ content }: HeroSectionProps) => {
     </div>
   );
 };
-
