@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import { Play } from "lucide-react";
@@ -6,7 +6,6 @@ import { Movie, Tv } from "@/types";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { fetchTrailer } from "@/lib/tmdb";
 import { Button } from "./ui/button";
-
 
 export const WatchNowButton = ({ content }: { content: Movie | Tv }) => {
   const [trailerUrl, setTrailerUrl] = useState<string | null>(null);
@@ -16,7 +15,10 @@ export const WatchNowButton = ({ content }: { content: Movie | Tv }) => {
   };
 
   const handlePlay = async () => {
-    const url = await fetchTrailer(content.id, isMovie(content) ? "movie" : "tv");
+    const url = await fetchTrailer(
+      content.id,
+      isMovie(content) ? "movie" : "tv",
+    );
     if (url) {
       setTrailerUrl(url);
     }
@@ -34,11 +36,13 @@ export const WatchNowButton = ({ content }: { content: Movie | Tv }) => {
             Trailer
           </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-4xl w-full aspect-video">
-          <DialogTitle className="sr-only">Trailer for {isMovie(content) ? content.title : content.name}</DialogTitle>
+        <DialogContent className="aspect-video w-full max-w-4xl">
+          <DialogTitle className="sr-only">
+            Trailer for {isMovie(content) ? content.title : content.name}
+          </DialogTitle>
           {trailerUrl && (
             <iframe
-              className="w-full h-full"
+              className="h-full w-full"
               src={trailerUrl}
               allow="autoplay; encrypted-media"
               allowFullScreen
@@ -49,5 +53,3 @@ export const WatchNowButton = ({ content }: { content: Movie | Tv }) => {
     </>
   );
 };
-
-
