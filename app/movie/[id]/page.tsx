@@ -33,7 +33,7 @@ const MovieDescription: React.FC<{ overview: string; rating: number }> = ({
   <div className="mb-4">
     <p className="mb-2 text-lg">{overview}</p>
     <Button className="text-lg font-semibold" variant="default">
-      Rating: {rating}
+      Rating: {rating?.toFixed(1)}
     </Button>
   </div>
 );

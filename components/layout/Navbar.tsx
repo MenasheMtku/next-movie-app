@@ -70,13 +70,13 @@ const Navbar = () => {
               : "pointer-events-none -translate-y-2 opacity-0"
           }`}
         >
-          <ul className="flex flex-col">
+          <ul className="flex flex-col items-center">
             {links.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <li
                   key={link.id}
-                  className={`transform transition-all duration-300 ease-in-out ${
+                  className={`transform transition-all duration-300 ease-in-out w-full ${
                     isMenuOpen
                       ? "translate-x-0 opacity-100"
                       : "translate-x-4 opacity-0"
@@ -87,7 +87,7 @@ const Navbar = () => {
                 >
                   <Link
                     href={link.href}
-                    className={`block px-4 py-3 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                    className={`flex px-4 py-3 transition-colors duration-200 justify-center hover:bg-gray-100 dark:hover:bg-gray-800 ${
                       isActive
                         ? "font-semibold text-gray-800 dark:text-foreground"
                         : "text-gray-500 dark:text-gray-200"
