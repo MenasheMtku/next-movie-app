@@ -124,6 +124,7 @@ export const fetchQuery = async (query: string) => {
   const results = data.results || []; // Ensure results is an array
 
   // Filter only movies
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const movies = results.filter((item: any) => item.media_type === "movie");
 
   console.log(results);

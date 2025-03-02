@@ -4,7 +4,7 @@ import MediaGrid from "@/components/MediaGrid";
 async function SearchPage({
   searchParams,
 }: {
-  searchParams: { query?: string };
+  searchParams: Promise<{ query: string }>;
 }) {
   // default to empty query
   const { query } = await searchParams || "";

@@ -4,7 +4,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function ClientMovieWrapper({ children }) {
+export default function ClientMovieWrapper({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
