@@ -1,9 +1,12 @@
+"use client";
 import Image from "next/image";
 import { Info, Star } from "lucide-react";
 import { Movie, Tv } from "@/types";
 import { WatchNowButton } from "./WatchTrailer";
 import { Button } from "./ui/button";
 import Link from "next/link";
+
+import { motion } from "framer-motion";
 
 interface HeroSectionProps {
   content: Movie | Tv;
@@ -24,14 +27,21 @@ export const HeroSection = ({ content }: HeroSectionProps) => {
   return (
     <div className="relative h-[70vh] w-screen overflow-hidden text-slate-200">
       <div className="absolute inset-0">
-        <Image
-          src={`${imageOriginal}${content.backdrop_path}`}
-          alt={title}
-          className="h-full w-full object-cover"
-          fill
-          priority
-        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeIn" }}
+        >
+          <Image
+            src={`${imageOriginal}${content.backdrop_path}`}
+            alt={title}
+            className="h-full w-full object-cover"
+            fill
+            priority
+          />
+        </motion.div>
       </div>
+
       <div className="absolute inset-0 bg-gradient-to-t from-black via-stone-950/80 to-transparent">
         <div className="mx-auto h-full max-w-7xl">
           <div className="absolute bottom-0 max-w-2xl p-8">
