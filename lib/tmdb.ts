@@ -116,3 +116,21 @@ export const fetchTrailer = async (id: number, type: "movie" | "tv"): Promise<st
   }
 };
 
+export const fetchQuery = async (query: string) => {
+  const response = await fetch(
+    `${url}search/multi?api_key=${key}&query=${query}&language=en-US`
+  );
+  const data = await response.json();
+  const results = data.results || []; // Ensure results is an array
+
+  // Filter only movies
+  const movies = results.filter((item: any) => item.media_type === "movie");
+
+  console.log(results);
+  return movies;
+};
+
+export const defaultPosterImage =
+  "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?q=80&w=1728&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+export const defaultBackdropImage =
+  "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?q=80&w=1728&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
