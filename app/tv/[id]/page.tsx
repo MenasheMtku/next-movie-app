@@ -4,14 +4,13 @@ import { getTvDetails } from "@/lib/tmdb"; // Adjust based on actual API service
 import { Card } from "@/components/ui/card";
 
 interface TvDetailsProps {
-  params: {
+  params: Promise<{
     id: number;
-  };
+  }>;
 }
 
-const imageOriginal = "https://image.tmdb.org/t/p/original";
-
-const TvDetails = async ({ params }: TvDetailsProps) => {
+const TvDetails = async (props: TvDetailsProps) => {
+  const params = await props.params;
   const tvShow = await getTvDetails(params.id);
 
   if (!tvShow) {
@@ -23,7 +22,7 @@ const TvDetails = async ({ params }: TvDetailsProps) => {
       <div className="mx-auto max-w-[800px] p-4">
         <p className="mb-4 text-4xl font-semibold">{tvShow.name}</p>
         <Image
-          src={`${imageOriginal}${tvShow.poster_path}`}
+          src={`https://image.tmdb.org/t/p/original${tvShow.poster_path}`}
           width={"218"}
           height={"168"}
           alt={tvShow.name}
