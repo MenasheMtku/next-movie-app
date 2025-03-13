@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Tv, X } from "lucide-react";
 import SearchInput from "../SearchInput";
 
 const Navbar = () => {
@@ -21,10 +21,17 @@ const Navbar = () => {
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4">
         <div className="flex items-center gap-8">
           <Link href="/">
-            <p className="text-2xl font-semibold md:text-3xl">Next Movie</p>
-          </Link>
+            <p className="hidden text-2xl font-semibold md:block md:text-3xl">
+              Next Movie
+            </p>
+            <span className="md:hidden">
+              <Tv />
+            </span>
+          </Link>{" "}
           <ThemeToggle />
-          <SearchInput />
+          <div className="hidden gap-8 md:inline-flex md:gap-8">
+            <SearchInput />
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -47,10 +54,11 @@ const Navbar = () => {
             return (
               <li
                 key={link.id}
-                className={`relative px-3 py-2 font-semibold transition-colors duration-200 ${isActive
-                  ? "font-semibold text-gray-800 dark:text-foreground"
-                  : "text-gray-500 dark:text-gray-200"
-                  }`}
+                className={`relative px-3 py-2 font-semibold transition-colors duration-200 ${
+                  isActive
+                    ? "font-semibold text-gray-800 dark:text-foreground"
+                    : "text-gray-500 dark:text-gray-200"
+                }`}
               >
                 <Link href={link.href} className="relative pb-2">
                   {link.title}
@@ -65,10 +73,11 @@ const Navbar = () => {
 
         {/* Mobile Menu with Animation */}
         <div
-          className={`absolute left-0 right-0 top-full transform border-b-2 bg-background transition-all duration-300 ease-in-out md:hidden ${isMenuOpen
-            ? "translate-y-0 opacity-100"
-            : "pointer-events-none -translate-y-2 opacity-0"
-            }`}
+          className={`absolute left-0 right-0 top-full transform border-b-2 bg-background transition-all duration-300 ease-in-out md:hidden ${
+            isMenuOpen
+              ? "translate-y-0 opacity-100"
+              : "pointer-events-none -translate-y-2 opacity-0"
+          }`}
         >
           <ul className="flex flex-col items-center">
             {links.map((link) => {
@@ -76,20 +85,22 @@ const Navbar = () => {
               return (
                 <li
                   key={link.id}
-                  className={`transform transition-all duration-300 ease-in-out w-full ${isMenuOpen
-                    ? "translate-x-0 opacity-100"
-                    : "translate-x-4 opacity-0"
-                    }`}
+                  className={`w-full transform transition-all duration-300 ease-in-out ${
+                    isMenuOpen
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-4 opacity-0"
+                  }`}
                   style={{
                     transitionDelay: `${isMenuOpen ? link.id * 100 : 0}ms`,
                   }}
                 >
                   <Link
                     href={link.href}
-                    className={`flex px-4 py-3 transition-colors duration-200 justify-center hover:bg-gray-100 dark:hover:bg-gray-800 ${isActive
-                      ? "font-semibold text-gray-800 dark:text-foreground"
-                      : "text-gray-500 dark:text-gray-200"
-                      }`}
+                    className={`flex justify-center px-4 py-3 transition-colors duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                      isActive
+                        ? "font-semibold text-gray-800 dark:text-foreground"
+                        : "text-gray-500 dark:text-gray-200"
+                    }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.title}
@@ -97,6 +108,13 @@ const Navbar = () => {
                 </li>
               );
             })}
+            <li className="p-1 md:hidden">
+              <div className="flex-col gap-4">
+                <div className="pt-2">
+                  <SearchInput />
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
       </nav>
